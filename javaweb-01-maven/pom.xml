@@ -1,25 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Maven版本和头文件-->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <!--这里就是刚刚配置的GAV  groupId  artifactId version-->
   <groupId>com.clearlove</groupId>
   <artifactId>javaweb-01-maven</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <!--项目的打包方式
+    jar：JAVA 应用
+    war：Java Web 应用
+  -->
+  <packaging>war</packaging>
 
+  <!--配置-->
   <properties>
+    <!--项目的默认构建编码-->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--编码版本-->
     <maven.compiler.source>14</maven.compiler.source>
     <maven.compiler.target>14</maven.compiler.target>
   </properties>
 
+  <!--项目依赖-->
   <dependencies>
+    <!--具体依赖的jar包配置文件-->
+    <!--maven的高级之处在于，他会帮你导入这个jar包所依赖的其他jar包-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
   </dependencies>
+
+<!--build 项目构建用的-->
+<!--在build中配置resources，来防止资源导出失败的问题-->
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>**/*.properties</exclude>
+          <exclude>**/*.xml</exclude>
+        </excludes>
+        <filtering>false</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+  </build>
 
 </project>
