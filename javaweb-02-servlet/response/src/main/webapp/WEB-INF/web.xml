@@ -15,4 +15,16 @@
   </servlet-mapping>
 
 
+
+  <servlet>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>com.clearlove.servlet.ImageServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/img</url-pattern>
+  </servlet-mapping>
+
+
 </web-app>
