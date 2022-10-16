@@ -15,4 +15,25 @@
   </servlet-mapping>
 
 
+  <servlet>
+    <servlet-name>CookieDemo02</servlet-name>
+    <servlet-class>com.clearlove.servlet.CookieDemo02</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CookieDemo02</servlet-name>
+    <url-pattern>/c2</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CookieDemo03</servlet-name>
+    <servlet-class>com.clearlove.servlet.CookieDemo03</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CookieDemo03</servlet-name>
+    <url-pattern>/c3</url-pattern>
+  </servlet-mapping>
+
+
 </web-app>
