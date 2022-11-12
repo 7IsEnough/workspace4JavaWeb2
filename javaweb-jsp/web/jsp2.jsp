@@ -9,6 +9,10 @@
 
 <%--定制错误页面--%>
 <%--<%@page errorPage="error/500.jsp" %>--%>
+
+<%--显示的声明这是一个错误页面--%>
+<%--<%@ page isErrorPage="true" %>--%>
+<%--<%@ page pageEncoding="utf-8" %>--%>
 <html>
 <head>
     <title>Title</title>
