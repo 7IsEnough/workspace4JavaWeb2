@@ -30,4 +30,13 @@
     <!--只要是/servlet的任何请求，会经过这个过滤器-->
     <url-pattern>/servlet/*</url-pattern>
   </filter-mapping>
+
+  <!--注册监听器-->
+  <listener>
+    <listener-class>com.clearlove.listener.OnlineCountListener</listener-class>
+  </listener>
+
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
 </web-app>
