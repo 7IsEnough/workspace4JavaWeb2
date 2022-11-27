@@ -19,6 +19,26 @@
     <url-pattern>/show</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>com.clearlove.servlet.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/servlet/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>com.clearlove.servlet.LogoutServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/servlet/logout</url-pattern>
+  </servlet-mapping>
+  
   
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
@@ -29,6 +49,17 @@
     <filter-name>CharacterEncodingFilter</filter-name>
     <!--只要是/servlet的任何请求，会经过这个过滤器-->
     <url-pattern>/servlet/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>sysFilter</filter-name>
+    <filter-class>com.clearlove.filter.SysFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>sysFilter</filter-name>
+    <!--只要是/servlet的任何请求，会经过这个过滤器-->
+    <url-pattern>/sys/*</url-pattern>
   </filter-mapping>
 
   <!--注册监听器-->
