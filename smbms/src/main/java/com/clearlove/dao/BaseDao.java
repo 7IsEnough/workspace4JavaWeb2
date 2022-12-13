@@ -51,11 +51,11 @@ public class BaseDao {
   }
 
   // 编写查询公共方法
-  public static ResultSet execute(Connection connection, String sql, Object[] params,
-      ResultSet resultSet, PreparedStatement preparedStatement) throws SQLException {
+  public static ResultSet execute(Connection connection, PreparedStatement preparedStatement,
+      ResultSet resultSet, String sql, Object[] params) throws SQLException {
     // 预编译的sql，再后面直接执行就可以了
     preparedStatement = connection.prepareStatement(sql);
-    for (int i = 0; i <= params.length; i++) {
+    for (int i = 0; i < params.length; i++) {
       // setObject，占位符从1开始，数组是从0开始
       preparedStatement.setObject(i + 1, params[i]);
     }

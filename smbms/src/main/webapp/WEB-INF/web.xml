@@ -15,5 +15,10 @@
     <filter-name>characterEncoding</filter-name>
     <filter-class>com.clearlove.filter.CharacterEncodingFilter</filter-class>
   </filter>
+  
+  <!--设置欢迎页面-->
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
 
 </web-app>
