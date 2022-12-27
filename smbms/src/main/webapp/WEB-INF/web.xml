@@ -24,6 +24,15 @@
     <url-pattern>/logout.do</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.clearlove.servlet.user.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/user.do</url-pattern>
+  </servlet-mapping>
+
   <!--用户登录过滤器-->
   <filter>
     <filter-name>SysFilter</filter-name>
