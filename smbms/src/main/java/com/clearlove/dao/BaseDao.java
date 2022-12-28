@@ -67,7 +67,7 @@ public class BaseDao {
   public static int execute(Connection connection, String sql, Object[] params,
       PreparedStatement preparedStatement) throws SQLException {
     preparedStatement = connection.prepareStatement(sql);
-    for (int i = 0; i <= params.length; i++) {
+    for (int i = 0; i < params.length; i++) {
       // setObject，占位符从1开始，数组是从0开始
       preparedStatement.setObject(i + 1, params[i]);
     }
