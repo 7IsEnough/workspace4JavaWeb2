@@ -1,6 +1,7 @@
 package com.clearlove.service.user;
 
 import com.clearlove.pojo.User;
+import java.util.List;
 
 /**
  * @author promise
@@ -13,4 +14,10 @@ public interface UserService {
 
   // 根据用户id修改密码
   public boolean updatePwd(int id, String password);
+
+  // 查询记录数
+  public int getUserCount(String username, int userRole);
+
+  // 通过条件查询userList
+  public List<User> getUserList(String queryUserName, int queryUserRole, int currentPageNo, int pageSize);
 }

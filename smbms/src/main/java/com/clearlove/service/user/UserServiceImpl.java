@@ -6,6 +6,7 @@ import com.clearlove.dao.user.UserDaoImpl;
 import com.clearlove.pojo.User;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -55,10 +56,54 @@ public class UserServiceImpl implements UserService {
     return flag;
   }
 
+  @Override
+  public int getUserCount(String username, int userRole) {
+    Connection connection = null;
+    int count = 0;
+
+    try {
+      connection = BaseDao.getConnection();
+      count = userDao.getUserCount(connection, username, userRole);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      BaseDao.closeResource(connection, null, null);
+    }
+
+    return count;
+
+  }
+
+  @Override
+  public List<User> getUserList(String queryUserName, int queryUserRole, int currentPageNo, int pageSize) {
+    // TODO Auto-generated method stub
+    Connection connection = null;
+    List<User> userList = null;
+    System.out.println("queryUserName ---- > " + queryUserName);
+    System.out.println("queryUserRole ---- > " + queryUserRole);
+    System.out.println("currentPageNo ---- > " + currentPageNo);
+    System.out.println("pageSize ---- > " + pageSize);
+    try {
+      connection = BaseDao.getConnection();
+      userList = userDao.getUserList(connection, queryUserName,queryUserRole,currentPageNo,pageSize);
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }finally{
+      BaseDao.closeResource(connection, null, null);
+    }
+    return userList;
+  }
+
+
+
+
   @Test
   public void test() {
     UserServiceImpl userService = new UserServiceImpl();
-    User admin = userService.login("admin", "1234567aa");
-    System.out.println(admin.getUserPassword());
+//    User admin = userService.login("admin", "1234567aa");
+//    System.out.println(admin.getUserPassword());
+    int count = userService.getUserCount(null, 0);
+    System.out.println(count);
   }
 }
