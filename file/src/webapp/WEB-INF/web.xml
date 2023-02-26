@@ -7,6 +7,16 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0">
+  
+  <servlet>
+    <servlet-name>FileServlet</servlet-name>
+    <servlet-class>com.clearlove.servlet.FileServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>FileServlet</servlet-name>
+    <url-pattern>/upload.do</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>
