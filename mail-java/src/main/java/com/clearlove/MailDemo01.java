@@ -1,16 +1,18 @@
 package com.clearlove;
 
 import com.sun.mail.util.MailSSLSocketFactory;
-import java.security.GeneralSecurityException;
 import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
-import javax.mail.Message;
 import javax.mail.Message.RecipientType;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  * @author promise
@@ -71,9 +73,40 @@ public class MailDemo01 {
 
     // 邮件的标题
     message.setSubject("欢迎来到英雄联盟");
+//    // 邮件的文本内容
+//    message.setContent("<h1 style='color: red'>你好啊！</h1>", "text/html;charset=UTF-8");
 
-    // 邮件的文本内容
-    message.setContent("<h1 style='color: red'>你好啊！</h1>", "text/html;charset=UTF-8");
+    // 准备图片数据
+    MimeBodyPart image = new MimeBodyPart();
+    // 图片需要经过数据处理
+    DataHandler dh = new DataHandler(new FileDataSource("src/1.jpg"));
+    // 在Body中放入这个处理的图片数据
+    image.setDataHandler(dh);
+    // 给图片设置一个id，后面可以使用
+    image.setContentID("1.jpg");
+
+    // 准备正文数据
+    MimeBodyPart text = new MimeBodyPart();
+    text.setContent("这是一封邮件正文带图片<img src='cid:1.jpg'>的邮件", "text/html;charset=UTF-8");
+
+    // 准备附件
+    MimeBodyPart attach = new MimeBodyPart();
+    attach.setDataHandler(new DataHandler(new FileDataSource("src/1.jpg")));
+    attach.setFileName("1.jpg");
+
+
+    // 描述数据关系
+    MimeMultipart mm = new MimeMultipart();
+    mm.addBodyPart(text);
+    mm.addBodyPart(image);
+    mm.addBodyPart(attach);
+
+
+    // 设置到消息中，保存修改
+    // 把最后编辑好的邮件放到消息当中
+    message.setContent(mm);
+    message.saveChanges();
+
 
 
     // 5.发送邮件
